@@ -1,0 +1,6 @@
+train: C:\Users\lmtsu\Desktop\sample-project\yolov8__\path\train.txt
+val: C:\Users\lmtsu\Desktop\sample-project\yolov8__\path\val.txt
+test: C:\Users\lmtsu\Desktop\sample-project\yolov8__\path\test.txt
+
+nc: 1
+names: ['licence']
