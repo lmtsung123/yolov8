@@ -19,9 +19,9 @@ f2.close()
 
 # 處理 key.yaml
 f = open('.\data\key.yaml', 'w', encoding='UTF-8')
-key = '''train: '''+glb_path+'''\\path\\train.txt
-val: '''+glb_path+'''\\path\\val.txt
-test: '''+glb_path+'''\\path\\test.txt
+key = '''train: '''+glb_path+'''\\dataSets\\path\\train.txt
+val: '''+glb_path+'''\\dataSets\\path\\val.txt
+test: '''+glb_path+'''\\dataSets\\path\\test.txt
 
 nc: ''' + str(len(labels.split(','))) + '\nnames: [' + labels + ']\n'
 f.write(key)
