@@ -1,6 +1,10 @@
 ## YOLO v8簡易訓練工具
 
-### 這是一個為了yoly v8小白的我，寫的yolo模型簡易的訓練工具。
+### 2024/02/12 更新
+### 增加 All in one 整合程式，藉由此單一程式可以完成所有的工作。
+### 在 \yolov8 底下執行 python all_in_one.py
+
+### 這是一個為了yoly v8小白的我，寫的yolo模型簡易訓練工具。
 ### 事先的準備工作：
 * 將所有的檔案clone到local端的電腦上
 * 將欲訓練的圖檔Copy到 \yolov8\dataSets\images 目錄底下
@@ -26,14 +30,14 @@
   * 如要以 yolov8n.pt 來訓練，則可以點選 yolov8n.pt。
   * 接著，電腦開始依據指定的訓練圖片及訓練模型進行訓練。
 * 完成訓練
-  * 完成訓練後，電腦會在 \yolov8__\runs\detect 目錄底下新產生 trainX 的目錄。
+  * 完成訓練後，電腦會在 \yolov8\runs\detect 目錄底下新產生 trainX 的目錄。
   * 在 trainX\weights 目錄底下，可發現 best.pt 檔案，該檔案即為訓練出來的模型檔。
 * 執行偵測
   * 將欲進行偵測的圖檔、影片檔Copy到 \yolov8\assets 底下。
   * 在 \yolov8 目錄底下，執行 python detect.py。
   * 程式將要求選擇欲使用哪一個模型檔來進行偵測
   * 我們可以選擇之前已訓練好的模型 best.py 來對 \yolov8\assets 底下的內容偵測。
-  * 程式將新產生一個 predictX 目錄在 \yolov8__\runs\detect 底下，偵測結果則輸出到此目錄以下。
+  * 程式將新產生一個 predictX 目錄在 \yolov8\runs\detect 底下，偵測結果則輸出到此目錄以下。
 * 接續訓練
   * yolo 在進行訓練時，每完成一個epoch就會產生一個暫存檔。
   * 如果在訓練的過程中被中斷，可以於事後再接續先前的訓練，而毋需重新訓練。

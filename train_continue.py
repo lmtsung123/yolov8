@@ -1,47 +1,32 @@
-from time import sleep
-import tkinter as tk
 from tkinter import filedialog, messagebox
-from PIL import ImageTk, Image
 from ultralytics import YOLO
 from multiprocessing import freeze_support
-from ultralytics import YOLO
-import os
+import PySimpleGUI as sg
 
-def open_pt_file():
-    file_path = filedialog.askopenfilename(title="選擇接繼訓練檔", filetypes=[("trained file", "*.pt")])
+
+def train_continue():
+    freeze_support()
     
-    try:
-        # Load a model
-        model = YOLO(file_path)  # load a partially trained model
+    # 設定顯示的檔案類型為 .pt 檔
+    file_types = [("PT files", "*.pt")]
 
-        root.destroy()
+    # 打開文件對話框，僅顯示 .pt 檔
+    selected_file = sg.popup_get_file('請選擇最後一次的訓練檔:',  title="接續訓練檔選擇器",font=("宋体", 15), file_types=file_types)
 
-        # Train the model using the 'key.yaml' dataset for 100 epochs
-        results = model.train(data='\\data\\key.yaml', epochs=200, device=0, workers=1, resume=True)
+    # 如果有選擇檔案，則輸出所選檔案的路徑
+    if selected_file:
+        try:
+            # Load a model
+            model = YOLO(selected_file)  # load a partially trained model
+            # Train the model using the 'key.yaml' dataset for 300 epochs
+            results = model.train(data='data\\key.yaml', resume=True)
 
-        # Evaluate the model's performance on the validation set
-        results = model.val()
-        
-    except Exception as e:
-        messagebox.showerror("錯誤", "檔案讀取有問題")
-        model = None
-
-
+            # Evaluate the model's performance on the validation set
+            results = model.val()
+        except Exception as e:
+            messagebox.showerror("錯誤", "檔案讀取有問題")
+            model = None
 
 
 if __name__ == '__main__':
-    freeze_support()
-    # 建立視窗
-    root = tk.Tk()
-    root.title("接續訓練檔選擇器")
-
-    # 選擇訓練檔按鈕
-    open_button = tk.Button(root, text="選擇訓練檔", command=open_pt_file)
-    open_button.pack()
-    # 顯示的標籤
-    label = tk.Label(root)
-    label.pack()
-
-    root.mainloop()
-
-
+    train_continue()

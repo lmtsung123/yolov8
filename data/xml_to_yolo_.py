@@ -65,26 +65,31 @@ def convert_annotation(image_id):
             bb = convert((w, h), b)
             out_file.write(str(cls_id) + " " + " ".join([str(a) for a in bb]) + '\n')
 
+def xml_to_yolo():
+    for image_set in sets:
+        if not os.path.exists(abs_path+'\\dataSets\\labels\\'):
+            os.makedirs('dataSets\\labels\\')
+        image_ids = open('dataSets\\imageSets\\Main\\%s.txt' % (image_set)).read().strip().split()
 
-for image_set in sets:
-    if not os.path.exists(abs_path+'\\dataSets\\labels\\'):
-        os.makedirs('dataSets\\labels\\')
-    image_ids = open('dataSets\\imageSets\\Main\\%s.txt' % (image_set)).read().strip().split()
+        if not os.path.exists('dataSets\\path\\'):
+            os.makedirs('dataSets\\path\\')
+        # 这行路径不需更改，这是相对路径
+        list_file = open('dataSets\\path\\%s.txt' % image_set, 'w')
 
-    if not os.path.exists('dataSets\\path\\'):
-        os.makedirs('dataSets\\path\\')
-    # 这行路径不需更改，这是相对路径
-    list_file = open('dataSets\\path\\%s.txt' % image_set, 'w')
+        # 製作圖檔名稱的字典    
+        imgs={}
+        img_list = os.listdir('.\dataSets\images')
+        for i in img_list:
+            j = i.split('.')
+            imgs[j[0]] = j[1]
 
-    # 製作圖檔名稱的字典    
-    imgs={}
-    img_list = os.listdir('.\dataSets\images')
-    for i in img_list:
-        j = i.split('.')
-        imgs[j[0]] = j[1]
+        # 图片格式为jpg则设置为 .jpg, 如果为png则设置为 .png。否则会出现路径找不到的问题
+        for image_id in image_ids:
+            list_file.write(abs_path + '\\dataSets\\images\\%s.%s\n' % (image_id, imgs[image_id]))
+            convert_annotation(image_id)
+        list_file.close()
 
-    # 图片格式为jpg则设置为 .jpg, 如果为png则设置为 .png。否则会出现路径找不到的问题
-    for image_id in image_ids:
-        list_file.write(abs_path + '\\dataSets\\images\\%s.%s\n' % (image_id, imgs[image_id]))
-        convert_annotation(image_id)
-    list_file.close()
+
+if __name__ == '__main__':
+    xml_to_yolo()
+    
