@@ -19,15 +19,9 @@ classes = ''' + str(labels) + '\n' + f1.read()
     f1.close()
     f2.close()
 
-<<<<<<< HEAD
     # 處理 key.yaml
     f = open('.\data\key.yaml', 'w', encoding='UTF-8')
     key = '''train: '''+glb_path+'''\\dataSets\\path\\train.txt
-=======
-# 處理 key.yaml
-f = open('.\data\key.yaml', 'w', encoding='UTF-8')
-key = '''train: '''+glb_path+'''\\dataSets\\path\\train.txt
->>>>>>> f07efe793bfcbc8b0ecc5a3953c3bc26fd0fac5f
 val: '''+glb_path+'''\\dataSets\\path\\val.txt
 test: '''+glb_path+'''\\dataSets\\path\\test.txt
 

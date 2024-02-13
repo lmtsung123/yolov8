@@ -1,6 +1,6 @@
-train: C:\Users\lmtsu\Desktop\sample-project\yolov8\dataSets\path\train.txt
-val: C:\Users\lmtsu\Desktop\sample-project\yolov8\dataSets\path\val.txt
-test: C:\Users\lmtsu\Desktop\sample-project\yolov8\dataSets\path\test.txt
+train: C:\Users\lmtsu\desktop\sample-project\yolov8\dataSets\path\train.txt
+val: C:\Users\lmtsu\desktop\sample-project\yolov8\dataSets\path\val.txt
+test: C:\Users\lmtsu\desktop\sample-project\yolov8\dataSets\path\test.txt
 
 nc: 1
 names: ['licence']

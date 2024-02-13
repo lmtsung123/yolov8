@@ -4,6 +4,8 @@
 ### 增加 All in one 整合程式，藉由此單一程式可以完成所有的工作。
 ### 在 \yolov8 底下執行 python all_in_one.py
 
+
+
 ### 這是一個為了yoly v8小白的我，寫的yolo模型簡易訓練工具。
 ### 事先的準備工作：
 * 將所有的檔案clone到local端的電腦上
